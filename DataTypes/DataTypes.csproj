@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C1708F8-2E63-4B28-B494-017A8CB83CE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataTypes</RootNamespace>
+    <AssemblyName>DataTypes</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\Scraping\bin\Debug\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\packages\Google.Apis.1.8.1\lib\net40\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\packages\Google.Apis.Auth.1.8.1\lib\net40\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices">
+      <HintPath>..\packages\Google.Apis.Auth.1.8.1\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\packages\Google.Apis.Core.1.8.1\lib\portable-net4+sl4+wp71+win8\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v2">
+      <HintPath>..\packages\Google.Apis.Drive.v2.1.8.1.1260\lib\portable-net4+sl4+wp71+win8\Google.Apis.Drive.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\packages\Google.Apis.1.8.1\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="JoeBlogs">
+      <HintPath>..\Scraping\bin\Debug\JoeBlogs.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.7\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.1.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.1.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.7\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.7\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.9.2\lib\portable-net4+sl4+wp71+win8\Zlib.Portable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvanceScraperFactory.cs" />
+    <Compile Include="AdvanceScraper\GioVangChotSoAdvanceScraper.cs" />
+    <Compile Include="AdvanceScraper\IBongdaAdvanceScraper.cs" />
+    <Compile Include="AdvanceScraper\NullAdvanceScraper.cs" />
+    <Compile Include="Collections\BlogSites.cs" />
+    <Compile Include="Collections\CategorySEORule.cs" />
+    <Compile Include="Collections\DriveImages.cs" />
+    <Compile Include="Collections\HarvestLink.cs" />
+    <Compile Include="Collections\IndexerService.cs" />
+    <Compile Include="Collections\KeywordList.cs" />
+    <Compile Include="Collections\KeywordPackage.cs" />
+    <Compile Include="Collections\LinkList.cs" />
+    <Compile Include="Collections\PortValueEncrypt.cs" />
+    <Compile Include="Collections\PostSiteArticle.cs" />
+    <Compile Include="Collections\Record.cs" />
+    <Compile Include="Collections\ScheduleRule.cs" />
+    <Compile Include="Collections\SEOPlugin.cs" />
+    <Compile Include="Collections\SEORule.cs" />
+    <Compile Include="Collections\SEORulesCollection.cs" />
+    <Compile Include="Collections\SEOSentence.cs" />
+    <Compile Include="Collections\TagLink.cs" />
+    <Compile Include="Collections\VirtualNewspapersPostRule.cs" />
+    <Compile Include="Collections\VirtualNewspapersPostRulesCollection.cs" />
+    <Compile Include="Collections\VirtualNewspapersRulesCollectionExtensionMethods.cs" />
+    <Compile Include="Collections\VirtualNewspapersScheduleRule.cs" />
+    <Compile Include="Collections\VirtualNewspapersSite.cs" />
+    <Compile Include="Collections\VNSPost.cs" />
+    <Compile Include="Enums\ArticleSourceType.cs" />
+    <Compile Include="Enums\AuthorityApperance.cs" />
+    <Compile Include="Enums\AuthorityKeywords.cs" />
+    <Compile Include="Enums\AuthoritySearchOptions.cs" />
+    <Compile Include="Enums\InsertLinkOptions.cs" />
+    <Compile Include="Enums\Limitation.cs" />
+    <Compile Include="Enums\OpenMode.cs" />
+    <Compile Include="Enums\PostSiteType.cs" />
+    <Compile Include="Enums\ProjectState.cs" />
+    <Compile Include="Enums\ProxyTestType.cs" />
+    <Compile Include="Enums\ProxyType.cs" />
+    <Compile Include="Enums\ScheduleMode.cs" />
+    <Compile Include="Enums\ScrapeMode.cs" />
+    <Compile Include="Enums\SEOPluginType.cs" />
+    <Compile Include="Enums\ArticleSourceLanguage.cs" />
+    <Compile Include="Enums\SystemMessage.cs" />
+    <Compile Include="Enums\TimeBetweenPost.cs" />
+    <Compile Include="Enums\TimeRange.cs" />
+    <Compile Include="Enums\TimeUnit.cs" />
+    <Compile Include="Enums\ViewMode.cs" />
+    <Compile Include="HarvesterFactory.cs" />
+    <Compile Include="Harvester\AdultMagHarvester.cs" />
+    <Compile Include="Harvester\BongDaLivesHarvester.cs" />
+    <Compile Include="Harvester\BongDaPlusHarvester.cs" />
+    <Compile Include="Harvester\BongDaVnHarvester.cs" />
+    <Compile Include="Harvester\BroMyGodHarvester.cs" />
+    <Compile Include="Harvester\CelebromanceComHarvester.cs" />
+    <Compile Include="Harvester\DantriHarvester.cs" />
+    <Compile Include="Harvester\DatingAdviceHarvester.cs" />
+    <Compile Include="Harvester\DoctorNerdLoveHarvester.cs" />
+    <Compile Include="Harvester\EvanmarckatzHarvester.cs" />
+    <Compile Include="Harvester\GioVangChotSoHarvester.cs" />
+    <Compile Include="Harvester\HeavyHarvester.cs" />
+    <Compile Include="Harvester\HuffingtonPostHarvester.cs" />
+    <Compile Include="Harvester\IBongdaHarvester.cs" />
+    <Compile Include="Harvester\NewsComAuHarvester.cs" />
+    <Compile Include="Harvester\NgoiSaoHarvester.cs" />
+    <Compile Include="Harvester\NullHarvester.cs" />
+    <Compile Include="Harvester\OleHarvester.cs" />
+    <Compile Include="Harvester\TapChiDanOngHarvester.cs" />
+    <Compile Include="Harvester\TelegraphHarvester.cs" />
+    <Compile Include="Harvester\TheGuardianHarvester.cs" />
+    <Compile Include="Harvester\TheThao247Harvester.cs" />
+    <Compile Include="Harvester\TimeSoccerHarvester.cs" />
+    <Compile Include="Harvester\TipKeoHarvester.cs" />
+    <Compile Include="Harvester\VietGiaiTriHarvester.cs" />
+    <Compile Include="Harvester\VnexpressHarvester.cs" />
+    <Compile Include="Inserter\FirstParagraphInserter.cs" />
+    <Compile Include="Inserter\LastParagraphInserter.cs" />
+    <Compile Include="Inserter\MostRelevantInserter.cs" />
+    <Compile Include="Inserter\NullInserter.cs" />
+    <Compile Include="Inserter\RandomInserter.cs" />
+    <Compile Include="InsertFactory.cs" />
+    <Compile Include="Interfaces\IAdvance.cs" />
+    <Compile Include="Interfaces\IAuthority.cs" />
+    <Compile Include="Interfaces\IHarvest.cs" />
+    <Compile Include="Interfaces\IInsert.cs" />
+    <Compile Include="Interfaces\IInternal.cs" />
+    <Compile Include="Interfaces\IPathCreater.cs" />
+    <Compile Include="Interfaces\IProxyScraper.cs" />
+    <Compile Include="Interfaces\ISEOPlugin.cs" />
+    <Compile Include="Interfaces\ISpawning.cs" />
+    <Compile Include="Interfaces\IVideo.cs" />
+    <Compile Include="InternalInserter\ByTagInternalInserter.cs" />
+    <Compile Include="PathCreaterFactory.cs" />
+    <Compile Include="PathCreater\AdultMagPathCreater.cs" />
+    <Compile Include="PathCreater\BongDaLivesPathCreater.cs" />
+    <Compile Include="PathCreater\BongDaPlusPathCreater.cs" />
+    <Compile Include="PathCreater\BongDaVnPathCreater.cs" />
+    <Compile Include="PathCreater\BroMyGodPathCreater.cs" />
+    <Compile Include="PathCreater\CelebromanceComPathCreater.cs" />
+    <Compile Include="PathCreater\DantriPathCreater.cs" />
+    <Compile Include="PathCreater\DatingAdvicePathCreater.cs" />
+    <Compile Include="PathCreater\DoctorNerdLovePathCreater.cs" />
+    <Compile Include="PathCreater\EvanmarckatzPathCreater.cs" />
+    <Compile Include="PathCreater\HeavyPathCreater.cs" />
+    <Compile Include="PathCreater\HuffingtonPostPathCreater.cs" />
+    <Compile Include="PathCreater\IBongdaPathCreater.cs" />
+    <Compile Include="PathCreater\NewsComAuPathCreater.cs" />
+    <Compile Include="PathCreater\NgoiSaoPathCreater.cs" />
+    <Compile Include="PathCreater\NullPathCreater.cs" />
+    <Compile Include="PathCreater\OlePathCreater.cs" />
+    <Compile Include="PathCreater\TapChiDanOngPathCreater.cs" />
+    <Compile Include="PathCreater\TelegraphPathCreater.cs" />
+    <Compile Include="PathCreater\TheGuardianPathCreater.cs" />
+    <Compile Include="PathCreater\TheThao247PathCreater.cs" />
+    <Compile Include="PathCreater\TipKeoPathCreater.cs" />
+    <Compile Include="PathCreater\VietGiaiTriPathCreater.cs" />
+    <Compile Include="PathCreater\VnexpressPathCreater.cs" />
+    <Compile Include="PluginFactory.cs" />
+    <Compile Include="ProxyScraperFactory.cs" />
+    <Compile Include="ProxyScraper\AliveProxyScraper.cs" />
+    <Compile Include="ProxyScraper\CheckerProxyScraper.cs" />
+    <Compile Include="ProxyScraper\CoolTestScraper.cs" />
+    <Compile Include="ProxyScraper\FineProxyScraper.cs" />
+    <Compile Include="ProxyScraper\GetProxyJPScraper.cs" />
+    <Compile Include="ProxyScraper\GoogleProxyScraper.cs" />
+    <Compile Include="ProxyScraper\HotVpnScraper.cs" />
+    <Compile Include="ProxyScraper\LetushideScraper.cs" />
+    <Compile Include="ProxyScraper\NntimeScraper.cs" />
+    <Compile Include="ProxyScraper\NotanH1Scraper.cs" />
+    <Compile Include="ProxyScraper\NullProxyScraper.cs" />
+    <Compile Include="ProxyScraper\ProxySakuraScraper.cs" />
+    <Compile Include="ProxyScraper\TxtProxyScraper.cs" />
+    <Compile Include="SEOPlugins\AllInOneSEO.cs" />
+    <Compile Include="SEOPlugins\NullPlugin.cs" />
+    <Compile Include="SEOPlugins\YoastPlugin.cs" />
+    <Compile Include="SourceScraper\AdultMagScraper.cs" />
+    <Compile Include="SourceScraper\BongDaLivesScraper.cs" />
+    <Compile Include="SourceScraper\BongDaPlusScraper.cs" />
+    <Compile Include="SourceScraper\BongDaVnScraper.cs" />
+    <Compile Include="Collections\Article.cs" />
+    <Compile Include="Collections\ArticleSource.cs" />
+    <Compile Include="Collections\Language.cs" />
+    <Compile Include="Collections\PostRule.cs" />
+    <Compile Include="Collections\PostSites.cs" />
+    <Compile Include="Collections\PostRulesCollection.cs" />
+    <Compile Include="Collections\SourceCategory.cs" />
+    <Compile Include="Collections\SystemProxy.cs" />
+    <Compile Include="Enums\ArticleCopyContentSavingOptions.cs" />
+    <Compile Include="Enums\ArticleCopyOptions.cs" />
+    <Compile Include="Enums\ArticleSearchOptions.cs" />
+    <Compile Include="Enums\ArticleType.cs" />
+    <Compile Include="Enums\KeywordType.cs" />
+    <Compile Include="Enums\PostingState.cs" />
+    <Compile Include="Enums\ScrapeState.cs" />
+    <Compile Include="Enums\SystemState.cs" />
+    <Compile Include="Enums\SystemView.cs" />
+    <Compile Include="Enums\TestType.cs" />
+    <Compile Include="HtmlSanitizer.cs" />
+    <Compile Include="Interfaces\IScraper.cs" />
+    <Compile Include="SourceScraper\BroMyGodScraper.cs" />
+    <Compile Include="SourceScraper\CelebromanceComScraper.cs" />
+    <Compile Include="SourceScraper\DantriScraper.cs" />
+    <Compile Include="SourceScraper\DatingAdviceScraper.cs" />
+    <Compile Include="SourceScraper\DoctorNerdLoveScraper.cs" />
+    <Compile Include="SourceScraper\EvanmarckatzScraper.cs" />
+    <Compile Include="SourceScraper\GioVangChotSoScraper.cs" />
+    <Compile Include="SourceScraper\HeavyScraper.cs" />
+    <Compile Include="SourceScraper\HuffingtonPostScraper.cs" />
+    <Compile Include="SourceScraper\IBongdaScraper.cs" />
+    <Compile Include="SourceScraper\NewsComAuScraper.cs" />
+    <Compile Include="SourceScraper\NgoiSaoScraper.cs" />
+    <Compile Include="SourceScraper\NullScraper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Collections\RulesCollectionExtensionMethods.cs" />
+    <Compile Include="ScraperFactory.cs" />
+    <Compile Include="SourceScraper\OleScraper.cs" />
+    <Compile Include="SourceScraper\TapChiDanOngScraper.cs" />
+    <Compile Include="SourceScraper\TelegraphScraper.cs" />
+    <Compile Include="SourceScraper\TheGuardianScraper.cs" />
+    <Compile Include="SourceScraper\TheThao247Scraper.cs" />
+    <Compile Include="SourceScraper\TimeSoccerComScraper.cs" />
+    <Compile Include="SourceScraper\TipKeoScraper.cs" />
+    <Compile Include="SourceScraper\VietGiaiTriScraper.cs" />
+    <Compile Include="SourceScraper\VnexpressScraper.cs" />
+    <Compile Include="SpawnerFactory.cs" />
+    <Compile Include="Spawner\AdultMagSpawner.cs" />
+    <Compile Include="Spawner\BongDaLivesSpawner.cs" />
+    <Compile Include="Spawner\BongDaPlusSpawner.cs" />
+    <Compile Include="Spawner\BongDaVnSpawner.cs" />
+    <Compile Include="Spawner\BroMyGodSpawner.cs" />
+    <Compile Include="Spawner\CelebromanceComSpawner.cs" />
+    <Compile Include="Spawner\DantriSpawner.cs" />
+    <Compile Include="Spawner\DatingAdviceSpawner.cs" />
+    <Compile Include="Spawner\DoctorNerdLoveSpawner.cs" />
+    <Compile Include="Spawner\EvanmarckatzSpawner.cs" />
+    <Compile Include="Spawner\GioVangChotSoSpawner.cs" />
+    <Compile Include="Spawner\HeavySpawner.cs" />
+    <Compile Include="Spawner\HuffingtonPostSpawner.cs" />
+    <Compile Include="Spawner\IBongdaSpawner.cs" />
+    <Compile Include="Spawner\NewsComAuSpawner.cs" />
+    <Compile Include="Spawner\NgoiSaoSpawner.cs" />
+    <Compile Include="Spawner\NullSpawner.cs" />
+    <Compile Include="Spawner\OleSpawner.cs" />
+    <Compile Include="Spawner\TapChiDanOngSpawner.cs" />
+    <Compile Include="Spawner\TelegraphSpawner.cs" />
+    <Compile Include="Spawner\TheGuardianSpawner.cs" />
+    <Compile Include="Spawner\TheThao247Spawner.cs" />
+    <Compile Include="Spawner\TimeSoccerComSpawner.cs" />
+    <Compile Include="Spawner\TipKeoSpawner.cs" />
+    <Compile Include="Spawner\VietGiaiTriSpawner.cs" />
+    <Compile Include="Spawner\VnexpressSpawner.cs" />
+    <Compile Include="Tager\HighAuthorityTager.cs" />
+    <Compile Include="Tager\NullTager.cs" />
+    <Compile Include="Tager\SearchEngineTager.cs" />
+    <Compile Include="TagFactory.cs" />
+    <Compile Include="VideoFactory.cs" />
+    <Compile Include="VideoInserter\HighAuthorityVideoInserter.cs" />
+    <Compile Include="VideoInserter\NullVideoInserter.cs" />
+    <Compile Include="VideoInserter\SearchEngineVideoInserter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

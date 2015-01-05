@@ -1,0 +1,83 @@
+﻿<Window x:Class="Scraping.AdvancedSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="AdvancedSettings" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" BorderBrush="#be2f2f" BorderThickness="3">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Name="dpHeader" MouseLeftButtonDown="dpHeader_MouseLeftButtonDown">
+            <Label Margin="270,0,0,0" Foreground="Gray" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold">System advanced settings</Label>
+            <Button Name="btnClose" Width="40" HorizontalAlignment="Right" Content="X" FontSize="15" FontWeight="ExtraBold" Click="btnClose_Click" Margin="0,5,5,5" />
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Header="Settings" Padding="0" Margin="5,0,5,5">                    
+                    <StackPanel Name="sp_ConfigureButtons">
+                        <Button Name="btnIndexServices" Content="Indexer services" FontWeight="Bold" Foreground="Green" Margin="0,0,0,5" />
+                        <Button Name="btnPublicSites" Content="Public sites" FontWeight="Bold" Margin="0,0,0,5" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="Configuration" Padding="0" Margin="0,0,5,5">
+                    <Grid>
+                        <DockPanel Name="dp_IndexerServices" Visibility="Visible">
+                            <StackPanel>
+                                <DockPanel>
+                                    <RadioButton Name="rbIndexerServicesAccept" GroupName="Indexer" Content="Yes" Margin="5,0,0,10" Checked="rbIndexer_Checked" />
+                                    <RadioButton Name="rbIndexerServicesDenied" GroupName="Indexer" Content="No" Margin="15,0,0,10" Checked="rbIndexer_Checked" />
+                                </DockPanel>
+                                <DockPanel Name="dp_IndexerServices_Details" Visibility="Hidden">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="400" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Grid.Row="0" Background="#2a2a2a" HorizontalContentAlignment="Center">Indexer Services</Label>
+                                        <Label Grid.Column="1" Grid.Row="0" Background="#2a2a2a" HorizontalContentAlignment="Center" BorderThickness="1,0,0,0" BorderBrush="#be2f2f">Status</Label>
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                                            <StackPanel Name="sp_ListIndexerServices" Margin="0,5,0,0">
+                                                
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>                                    
+                                </DockPanel>
+                            </StackPanel>
+                        </DockPanel>
+                        <DockPanel Name="dp_PublicSites" Visibility="Hidden">
+                            
+                        </DockPanel>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,19 @@
+Structure of source.ini
+
+[articlesources]
+source1=baobongda|bongda.com.vn|http://bongda.com.vn|True|Thu-vien-anh|Thu-vien-Video|/tags/{0}/index.aspx{1}
+source2=thethao247|thethao247.vn|http://thethao247.vn|True|hau-truong|video-bong-da|/{0}-tag/p{1}
+
+baobongda = Name control
+bongda.com.vn = Content control
+http://bongda.com.vn = URL source
+True|False = Chosen or not
+Thu-vien-Anh = Gallery category slugs
+Thu-vien-Video = Forbidden category slugs
+/tags/{0}/index.aspx{1} = scrape link structure
+
+Cap nhat lai file .ini
+Chen them du lieu ve autopost
+
+Tao them file sites.ini
+Chua thong tin wordpress site can dang

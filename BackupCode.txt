@@ -1,0 +1,141 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using JoeBlogs;
+
+namespace DataTypes.Interfaces
+{
+    public interface ISEOPlugin
+    {
+        void SetupSEOFactors(string title, string desc, string metaKeywords,string addition);
+        CustomField[] createSEOFactors();
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using JoeBlogs;
+using HtmlAgilityPack;
+using DataTypes.Interfaces;
+using DataTypes.Collections;
+using System.Text.RegularExpressions;
+using DataTypes.Enums;
+using System.IO;
+using System.Web;
+
+namespace DataTypes
+{
+    public class YoastPlugin : ISEOPlugin
+    {
+        private static string _titleMetaKey = "_yoast_wpseo_title";
+        private static string _descMetaKey = "_yoast_wpseo_metadesc";
+        private static string _keywordsMetaKey = "_yoast_wpseo_metakeywords";
+        private static string _focusKwMetaKey = "_yoast_wpseo_focuskw";
+
+        private string titleValue;
+        private string descValue;
+        private string keywordsValue;
+        private string focusKwValue;
+
+        public void SetupSEOFactors(string title, string desc, string metaKeywords, string addition)
+        {
+            titleValue = title;
+            descValue = desc;
+            keywordsValue = metaKeywords;
+            focusKwValue = addition;
+        }
+
+        public CustomField[] createSEOFactors()
+        {
+            var cfs = new CustomField[]
+            {
+                new CustomField()
+                {
+                    Key = _titleMetaKey,
+                    Value = titleValue
+                },
+                new CustomField()
+                {
+                    Key = _descMetaKey,
+                    Value = descValue
+                },
+                new CustomField()
+                {
+                    Key = _keywordsMetaKey,
+                    Value = keywordsValue
+                },
+                new CustomField()
+                {
+                    Key = _focusKwMetaKey,
+                    Value = focusKwValue
+                }
+            };
+
+            return cfs;
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using JoeBlogs;
+using HtmlAgilityPack;
+using DataTypes.Interfaces;
+using DataTypes.Collections;
+using System.Text.RegularExpressions;
+using DataTypes.Enums;
+using System.IO;
+using System.Web;
+
+namespace DataTypes
+{
+    public class AllInOneSEO : ISEOPlugin
+    {
+        private static string _titleMetaKey = "_aioseop_title";
+        private static string _descMetaKey = "_aioseop_description";
+        private static string _keywordsMetaKey = "_aioseop_keywords";
+
+        private string titleValue;
+        private string descValue;
+        private string keywordsValue;
+
+        public void SetupSEOFactors(string title, string desc, string metaKeywords, string addition)
+        {
+            titleValue = title;
+            descValue = desc;
+            keywordsValue = metaKeywords;            
+        }
+
+        public CustomField[] createSEOFactors()
+        {
+            var cfs = new CustomField[]
+            {
+                new CustomField()
+                {
+                    Key = _titleMetaKey,
+                    Value = titleValue
+                },
+                new CustomField()
+                {
+                    Key = _descMetaKey,
+                    Value = descValue
+                },
+                new CustomField()
+                {
+                    Key = _keywordsMetaKey,
+                    Value = keywordsValue
+                }               
+            };
+
+            return cfs;
+        }
+    }
+}

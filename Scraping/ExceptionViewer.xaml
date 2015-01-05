@@ -1,0 +1,47 @@
+﻿<Window x:Class="Scraping.ExceptionViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="Error Message Box" Height="300" Width="687" ResizeMode="CanMinimize" Name="ExceptionViewerWindow" WindowStyle="None" AllowsTransparency="False">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+            
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="487" />
+        </Grid.ColumnDefinitions>      
+        <DockPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+            <GroupBox Header="Error List" Margin="5,0,5,5" Width="190">
+                <TreeView Name="treeView1" SelectedItemChanged="treeView1_SelectedItemChanged" />
+            </GroupBox>
+        </DockPanel>
+        <DockPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+            <GroupBox Header="Error Details" Margin="0,0,5,5" Width="475">
+                <DockPanel LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button Margin="10,5,2,5" Padding="3" Name="btnCopy" Click="btnCopy_Click">Copy to Clipboard</Button>
+                        <Button Margin="2,5,10,5" Padding="3" Name="btnClose" Click="btnClose_Click">Close</Button>
+                    </StackPanel>
+                    <FlowDocumentScrollViewer Name="docViewer" Margin="0,0,10,5" />
+                </DockPanel>
+            </GroupBox>
+        </DockPanel>       
+    </Grid>
+</Window>

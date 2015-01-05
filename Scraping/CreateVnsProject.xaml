@@ -1,0 +1,46 @@
+﻿<Window x:Class="Scraping.CreateVnsProject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="CreateVnsProject" Height="202" Width="402" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" BorderBrush="#be2f2f" BorderThickness="3">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontSize="20" FontStyle="Italic" Foreground="White" HorizontalContentAlignment="Center" VerticalAlignment="Center">Create new Vns project</Label>
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label VerticalAlignment="Center">Name:</Label>
+                <TextBox VerticalAlignment="Center" Width="345" HorizontalAlignment="Right" Margin="5,0,10,0" Name="tbName"></TextBox>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Margin="10,0,2,5" Padding="3" Name="btnOK" Width="80" Content="OK" Click="btnOK_Click" />
+                    <Button Margin="2,0,10,5" Padding="3" Name="btnCancel" Width="80" Content="Cancel" Click="btnCancel_Click" />
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

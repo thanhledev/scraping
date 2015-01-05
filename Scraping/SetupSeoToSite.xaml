@@ -1,0 +1,267 @@
+﻿<Window x:Class="Scraping.SetupSeoToSite"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="SetupSeoToSite" Height="1010" Width="800" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" AllowDrop="True" BorderBrush="#be2f2f" BorderThickness="3">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+            <!-- Dark Theme -->
+            <SolidColorBrush x:Key="BackgroundKey" Color="#181818" />
+            <Style x:Key="MainLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="#767676" />
+                <Setter Property="FontSize" Value="18 "/>
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Name="dpHeader" MouseLeftButtonDown="dpHeader_MouseLeftButtonDown" >
+            <Label Margin="300,0,0,0" Foreground="Gray" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold">Setup SEO to Websites</Label>
+            <Button Name="btnClose" Width="40" HorizontalAlignment="Right" Content="X" FontSize="15" FontWeight="ExtraBold" Margin="0,5,5,5" Click="btnClose_Click" />
+        </DockPanel>
+        <GroupBox Header="Post Sites" Grid.Column="0" Grid.Row="1" Margin="5,0,5,5" Padding="0">
+            <StackPanel>
+                <ComboBox Name="cbSelectPostSite" Margin="0,0,0,10" SelectionChanged="cbSelectPostSite_SelectionChanged"></ComboBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Name="SiteViewer" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                    <TreeView Name="trSelectedPostSiteCategories" BorderThickness="0" SelectedItemChanged="trSelectedPostSiteCategories_SelectedItemChanged" Background="Black">
+                        
+                    </TreeView>
+                </ScrollViewer>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="SEO settings" Grid.Column="1" Grid.Row="1" Margin="0,0,5,5" Padding="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0">
+                    <Label VerticalContentAlignment="Center" Width="80" HorizontalAlignment="Left" Height="30">SEO Plugins</Label>
+                    <ComboBox Name="cbSEOPlugin" VerticalAlignment="Center" SelectionChanged="cbSEOPlugin_SelectionChanged" />
+                </DockPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Total keywords" Height="30" />
+                    <ComboBox Name="cbTotalKeywords" Height="30" Width="100" FontSize="12" MaxDropDownHeight="150" SelectionChanged="cbTotalKeywords_SelectionChanged">
+                        <ComboBoxItem Tag="0">None</ComboBoxItem>
+                        <ComboBoxItem Tag="1">1</ComboBoxItem>
+                        <ComboBoxItem Tag="2">2</ComboBoxItem>
+                        <ComboBoxItem Tag="3">3</ComboBoxItem>
+                        <ComboBoxItem Tag="4">4</ComboBoxItem>
+                        <ComboBoxItem Tag="5">5</ComboBoxItem>
+                        <ComboBoxItem Tag="6">6</ComboBoxItem>
+                        <ComboBoxItem Tag="7">7</ComboBoxItem>
+                        <ComboBoxItem Tag="8">8</ComboBoxItem>
+                        <ComboBoxItem Tag="9">9</ComboBoxItem>
+                        <ComboBoxItem Tag="10">10</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <DockPanel Grid.Row="2">
+                    <GroupBox Header="Keyword list" FontSize="12" Padding="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="290"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Column="0" Grid.Row="0" Name="dp_KeywordSettingControlButtons">
+                                <Button Name="btnAddKeywordList" Width="60" HorizontalAlignment="Left" Content="Add" FontWeight="ExtraBold" FontSize="12" VerticalContentAlignment="Center" Click="btnAddKeywordList_Click" />
+                                <Button Name="btnDeleteKeywordList" Width="60" HorizontalAlignment="Left" Content="Delete" FontWeight="ExtraBold" FontSize="12" VerticalContentAlignment="Center" Margin="10,0,0,0" Click="btnDeleteKeywordList_Click" />
+                            </DockPanel>
+                            <DockPanel Grid.Column="1" Grid.Row="0">
+                                <Label BorderThickness="1,0,0,0" BorderBrush="Gray">Type</Label>
+                            </DockPanel>
+                            <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,5,0,0">
+                                <StackPanel Name="sp_KeywordList">
+                                    
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                </DockPanel>
+                <DockPanel Grid.Row="3" HorizontalAlignment="Left">
+                    <Label Height="30" VerticalContentAlignment="Center" Content="Primary %" FontSize="12" />
+                    <ComboBox Name="cbPrimaryKeywordPercentage" Height="30" Width="70" MaxDropDownHeight="150" FontSize="12" SelectionChanged="KeywordPercentage_SelectionChanged" />
+                    <Label Height="30" VerticalContentAlignment="Center" Content="Secondary %" FontSize="12" />
+                    <ComboBox Name="cbSecondaryKeywordPercentage" Height="30" Width="70" MaxDropDownHeight="150" FontSize="12" SelectionChanged="KeywordPercentage_SelectionChanged" />
+                    <Label Height="30" VerticalContentAlignment="Center" Content="Generic %" FontSize="12" />
+                    <ComboBox Name="cbGenericKeywordPercentage" Height="30" Width="70" MaxDropDownHeight="150" FontSize="12" SelectionChanged="KeywordPercentage_SelectionChanged" />
+                </DockPanel>
+                <DockPanel Grid.Row="4" Grid.RowSpan="2">
+                    <GroupBox Header="Link list" FontSize="12" Padding="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Column="0" Grid.Row="0" Name="dp_LinkSettingControlButtons">
+                                <Button Name="btnAddUrlList" Width="60" HorizontalAlignment="Left" Content="Add" FontWeight="ExtraBold" FontSize="12" VerticalContentAlignment="Center" Click="btnAddUrlList_Click" />
+                                <Button Name="btnDeleteUrlList" Width="60" HorizontalAlignment="Left" Content="Delete" FontWeight="ExtraBold" FontSize="12" VerticalContentAlignment="Center" Margin="10,0,0,0" Click="btnDeleteUrlList_Click" />                                
+                            </DockPanel>
+                            <DockPanel Grid.Column="1" Grid.Row="0">
+                                <Label BorderThickness="1,0,0,0" BorderBrush="Gray">Binding to List</Label>
+                            </DockPanel>
+                            <ScrollViewer Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,5,0,0">
+                                <StackPanel Name="sp_ListUrlSettings">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                </DockPanel>
+                <DockPanel Grid.Row="6">
+                    <GroupBox Header="Authority links" FontSize="12" Padding="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <RadioButton Name="rbAuthorityAccept" GroupName="Authority" Content="Yes" Margin="5,3,0,10" Checked="radioButton_Checked" />
+                                <RadioButton Name="rbAuthorityDeny" GroupName="Authority" Content="No" Margin="5,0,0,10" Checked="radioButton_Checked" />
+                            </StackPanel>
+                            <DockPanel Grid.Column="1" Name="dp_AuthoritySettings">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <DockPanel Grid.Row="0" HorizontalAlignment="Left">
+                                        <Label FontSize="12" Height="30" Width="100">Keywords :</Label>
+                                        <ComboBox FontSize="12" Height="30" Name="cbAuthorityKeywords" Margin="5,0,0,0" Width="220" SelectionChanged="cbAuthorityKeywords_SelectionChanged" >
+                                            <ComboBoxItem FontSize="12" Tag="ArticleTags">Article Tags</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="ManualTags">Manual Tags</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+                                        <Label FontSize="12" Height="30" Width="100">Search options :</Label>
+                                        <ComboBox FontSize="12" Height="30" Name="cbAuthoritySearchOptions" Margin="5,0,0,0" Width="220" SelectionChanged="cbAuthoritySearchOptions_SelectionChanged" >
+                                            <ComboBoxItem FontSize="12" Tag="SearchEngine">Google, Bing, Yahoo...</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="HighAuthoritySite">CNN, BBC, Fox, Mirror ...</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <DockPanel Grid.Row="2" HorizontalAlignment="Left">
+                                        <Label FontSize="12" Height="30" Width="100">Apperance :</Label>
+                                        <ComboBox FontSize="12" Height="30" Name="cbAuthorityApperanceNumber" Margin="5,0,0,0" Width="220" SelectionChanged="cbAuthorityApperanceNumber_SelectionChanged" >
+                                            <ComboBoxItem FontSize="12" Tag="UpTo1">Up to 1 links</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="UpTo2">Up to 2 links</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="UpTo3">Up to 3 links</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+                                </Grid>
+                            </DockPanel>
+                        </Grid>
+                    </GroupBox>
+                </DockPanel>
+                <DockPanel Grid.Row="7">
+                    <GroupBox Header="Videos" FontSize="12" Padding="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <RadioButton Name="rbVideoAccept" GroupName="Video" Content="Yes" Margin="5,3,0,10" Checked="radioButton_Checked" />
+                                <RadioButton Name="rbVideoDeny" GroupName="Video" Content="No" Margin="5,0,0,10" Checked="radioButton_Checked" />                                
+                            </StackPanel>
+                            <DockPanel Grid.Column="1" Name="dp_VideoSettings">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <DockPanel Grid.Row="0" HorizontalAlignment="Left">
+                                        <Label FontSize="12" Height="30" Width="100">Keywords :</Label>
+                                        <ComboBox FontSize="12" Height="30" Name="cbVideoKeywords" Margin="5,0,0,0" Width="220" SelectionChanged="cbVideoKeywords_SelectionChanged" >
+                                            <ComboBoxItem FontSize="12" Tag="ArticleTags">Article Tags</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="ManualTags">Manual Tags</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+                                        <Label FontSize="12" Height="30" Width="100">Search options :</Label>
+                                        <ComboBox FontSize="12" Height="30" Name="cbVideoSearchOptions" Margin="5,0,0,0" Width="220" SelectionChanged="cbVideoSearchOptions_SelectionChanged" >
+                                            <ComboBoxItem FontSize="12" Tag="HighAuthoritySite">Youtube, Video, Dailymotion ...</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="SearchEngine">Google, Bing, Yahoo...</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+                                </Grid>
+                            </DockPanel>
+                        </Grid>
+                    </GroupBox>
+                </DockPanel>
+                <DockPanel Grid.Row="8">
+                    <GroupBox Header="Internal Links" FontSize="12" Padding="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <RadioButton Name="rbInternalLinksAccept" GroupName="Internal" Content="Yes" Margin="5,0,0,0" Checked="radioButton_Checked" />
+                                <RadioButton Name="rbInternalLinksDeny" GroupName="Internal" Content="No" Margin="5,0,0,0" Checked="radioButton_Checked" />
+                            </StackPanel>
+                            <DockPanel Grid.Column="1" Name="dp_InternalSettings">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <DockPanel Grid.Row="0" HorizontalAlignment="Left">
+                                        <Label FontSize="12" Height="30" Width="100">Keywords :</Label>
+                                        <ComboBox FontSize="12" Height="30" Name="cbInternalLinksKeywords" Margin="5,0,0,0" Width="220" SelectionChanged="cbInternalLinksKeywords_SelectionChanged" >
+                                            <ComboBoxItem FontSize="12" Tag="ArticleTags">Article Tags</ComboBoxItem>
+                                            <ComboBoxItem FontSize="12" Tag="ManualTags">Manual Tags</ComboBoxItem>
+                                        </ComboBox>
+                                    </DockPanel>
+                                </Grid>
+                            </DockPanel>
+                        </Grid>
+                    </GroupBox>
+                </DockPanel>
+                <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right" Name="sp_ProjectControlButtons">
+                    <Button Name="btnSwitchingViewMode" Content="Switch to edit" Height="30" Width="130" Margin="0,0,20,0" FontWeight="Bold" Foreground="Red" Visibility="Visible" Click="btnSwitchingViewMode_Click" />
+                    <Button Name="btnSave" Content="Save" Height="30" Width="100" Margin="0,0,20,0" FontWeight="Bold" Click="btnSave_Click" />
+                    <Button Name="btnReset" Content="Reset" Height="30" Width="100" Margin="0,0,0,0" FontWeight="Bold" Click="btnReset_Click" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

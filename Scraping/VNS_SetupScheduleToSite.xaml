@@ -1,0 +1,93 @@
+﻿<Window x:Class="Scraping.VNS_SetupScheduleToSite"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="VNS_SetupScheduleToSite" Height="350" Width="800" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" AllowDrop="True" BorderBrush="#be2f2f" BorderThickness="3">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+            <!-- Dark Theme -->
+            <SolidColorBrush x:Key="BackgroundKey" Color="#181818" />
+            <Style x:Key="MainLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="#767676" />
+                <Setter Property="FontSize" Value="18 "/>
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Name="dpHeader" MouseLeftButtonDown="dpHeader_MouseLeftButtonDown">
+            <Label Margin="250,0,0,0" Foreground="Gray" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold">Setup VNS schedule to Websites</Label>
+            <Button Name="btnClose" Width="40" HorizontalAlignment="Right" Content="X" FontSize="15" FontWeight="ExtraBold" Margin="0,5,5,5" Click="btnClose_Click" />
+        </DockPanel>
+        <DockPanel Grid.Row="1"  Margin="5,0,5,5">
+            <GroupBox Header="Common settings" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Row="0">
+                        <Label VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="200">Number of post per day :</Label>
+                        <TextBox Name="tbNumberPostsPerDay" HorizontalAlignment="Left" Height="30" Width="200" LostFocus="tbNumberPostsPerDay_LostFocus" PreviewKeyDown="NumericTextBox_PreviewKeyDown" />
+                    </DockPanel>
+                    <DockPanel Grid.Row="1">
+                        <Label VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="200">Time between posts :</Label>
+                        <ComboBox Name="cbTimeBetweenPost" Height="30" Width="200" HorizontalAlignment="Left" SelectionChanged="cbTimeBetweenPost_SelectionChanged" >
+                            <ComboBoxItem Tag="Automatically">Automatically calculate</ComboBoxItem>
+                            <ComboBoxItem Tag="Manually">Manually setup</ComboBoxItem>
+                        </ComboBox>
+                        <DockPanel Name="dpManuallyTime" Visibility="Hidden">
+                            <Label VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Margin="10,0,5,0">Between</Label>
+                            <TextBox Name="tbMinRandomInterval" Height="30" Width="60" HorizontalAlignment="Left" PreviewKeyDown="NumericTextBox_PreviewKeyDown" LostFocus="tbMinRandomInterval_LostFocus" />
+                            <Label VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Margin="5,0,5,0">And</Label>
+                            <TextBox Name="tbMaxRandomInterval" Height="30" Width="60" HorizontalAlignment="Left" PreviewKeyDown="NumericTextBox_PreviewKeyDown" LostFocus="tbMaxRandomInterval_LostFocus" />
+                            <ComboBox Name="cbTimeUnit" Height="30" Width="120" Margin="10,0,0,0" HorizontalAlignment="Left" SelectionChanged="cbTimeUnit_SelectionChanged" >
+                                <ComboBoxItem Tag="Minute">Minutes</ComboBoxItem>
+                                <ComboBoxItem Tag="Hour">Hour</ComboBoxItem>
+                            </ComboBox>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel Grid.Row="2">
+                        <Label VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="200">Coming back Interval :</Label>
+                        <ComboBox Name="cbComebackInterval" Height="30" HorizontalAlignment="Left" Width="100">
+                            <ComboBoxItem Tag="30">30 mins</ComboBoxItem>
+                            <ComboBoxItem Tag="60">60 mins</ComboBoxItem>
+                            <ComboBoxItem Tag="90">90 mins</ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                    <DockPanel Grid.Row="3">
+                        <Label VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="200">Logo image :</Label>
+                        <Button Name="btnChooseLogoImage" Content="Choose Logo Image" Height="30" FontWeight="Bold" HorizontalAlignment="Left" Click="btnChooseLogoImage_Click" />
+                        <TextBox Name="tbLogoImagePath" Height="30" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,0,0,0" Width="300" IsReadOnly="True"></TextBox>
+                    </DockPanel>
+                </Grid>
+            </GroupBox>
+        </DockPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="btnSave" Content="Save" Height="30" Width="100" Margin="0,0,20,0" FontWeight="Bold" Click="btnSave_Click" />
+            <Button Name="btnReset" Content="Reset" Height="30" Width="100" Margin="0,0,5,0" FontWeight="Bold" Click="btnReset_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

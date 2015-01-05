@@ -1,0 +1,91 @@
+﻿<Window x:Class="Scraping.KeywordListEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="KeywordListEditor" Height="450" Width="600" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" AllowDrop="True" BorderThickness="1" BorderBrush="Gray">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+            <!-- Dark Theme -->
+            <SolidColorBrush x:Key="BackgroundKey" Color="#181818" />
+            <Style x:Key="MainLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="#767676" />
+                <Setter Property="FontSize" Value="18 "/>
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Name="dpHeader" MouseLeftButtonDown="dpHeader_MouseLeftButtonDown" >
+            <Label Margin="230,0,0,0" Foreground="Gray" VerticalContentAlignment="Center" FontWeight="Bold">Keyword list settings</Label>
+            <Button Name="btnClose" Width="40" HorizontalAlignment="Right" Content="X" FontWeight="ExtraBold" Height="30" VerticalAlignment="Top" Click="btnClose_Click" />
+        </DockPanel>
+        <DockPanel Grid.Column="0" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"></RowDefinition>
+                    <RowDefinition Height="130"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <GroupBox Header="List name" FontSize="12" Padding="0" Grid.Row="0" Margin="5,0,0,0">
+                    <TextBox Name="tbKeywordListName" Height="30"></TextBox>
+                </GroupBox>
+                <GroupBox Header="Keyword Type" FontSize="12" Padding="0" Grid.Row="1" Margin="5,0,0,0">
+                    <StackPanel>
+                        <RadioButton Name="rbPrimay" GroupName="Keyword" Content="Primary keywords" FontSize="12" IsChecked="True" Checked="radioButton_Checked" />
+                        <RadioButton Name="rbSecondary" GroupName="Keyword" Content="Secondary keywords" FontSize="12" Checked="radioButton_Checked" />
+                        <RadioButton Name="rbGeneric" GroupName="Keyword" Content="Generic keywords" FontSize="12" Checked="radioButton_Checked" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Options" FontSize="12" Padding="0" Grid.Row="2" Margin="5,0,0,5">
+                    <StackPanel>
+                        <Label FontSize="12">Insert options</Label>
+                        <ComboBox Name="cbInsertOptions" FontSize="12" SelectionChanged="cbInsertOptions_SelectionChanged" >
+                            <ComboBoxItem Content="Random postion" Tag="Random" FontSize="12" IsSelected="True"></ComboBoxItem>
+                            <ComboBoxItem Content="Most relevant words" Tag="MostRelevant" FontSize="12"></ComboBoxItem>
+                            <ComboBoxItem Content="First paragraph" Tag="FirstParagraph" FontSize="12"></ComboBoxItem>
+                            <ComboBoxItem Content="Last paragraph" Tag="LastParagraph" FontSize="12"></ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+        <DockPanel Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="370"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Keywords" FontSize="12" Padding="0" Margin="5,0,5,5" Grid.Row="0">
+                    <TextBox Name="tbKeywords" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto"></TextBox>
+                </GroupBox>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Name="btnCancel" Content="Cancel" Height="30" Width="100" Click="btnCancel_Click" />
+                    <Button Name="btnSave" Content="Save" Height="30" Width="100" Margin="20,0,5,0" Click="btnSave_Click" />
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

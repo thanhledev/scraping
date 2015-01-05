@@ -1,0 +1,122 @@
+﻿<Window x:Class="Scraping.ProxyAdvanceSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="ProxyAdvanceSettings" Height="400" Width="750" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" AllowDrop="True" BorderBrush="#be2f2f" BorderThickness="3">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+            <!-- Dark Theme -->
+            <SolidColorBrush x:Key="BackgroundKey" Color="#181818" />
+            <Style x:Key="MainLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="#767676" />
+                <Setter Property="FontSize" Value="18 "/>
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Name="dpHeader" MouseLeftButtonDown="dpHeader_MouseLeftButtonDown" >
+            <Label Margin="230,0,0,0" Foreground="Gray" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold">Proxy advance settings</Label>
+            <Button Name="btnClose" Width="40" HorizontalAlignment="Right" Content="X" FontSize="15" FontWeight="ExtraBold" Margin="0,5,5,5" Click="btnClose_Click" />
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Auto scrape proxy" Grid.Column="0" Padding="0" Margin="5,0,5,5">
+                    <StackPanel>
+                        <DockPanel>
+                            <CheckBox Name="chbAutoSearchProxy" Content="Automatically search for new proxies every" FontSize="12" Checked="chbAutoSearchProxy_Checked" Unchecked="chbAutoSearchProxy_Unchecked"  />
+                            <ComboBox Name="cbSearchProxyInterval" FontSize="12" MaxDropDownHeight="150" Margin="5" Height="30" SelectionChanged="cbSearchProxyInterval_SelectionChanged" >
+                                <ComboBoxItem Tag="30" FontSize="12">30 minutes</ComboBoxItem>
+                                <ComboBoxItem Tag="60" FontSize="12">60 minutes</ComboBoxItem>
+                                <ComboBoxItem Tag="90" FontSize="12">90 minutes</ComboBoxItem>
+                            </ComboBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <CheckBox Name="chbTestProxies" Content="Test proxies after add?" FontSize="12" Checked="chbTestProxies_Checked" Unchecked="chbTestProxies_Unchecked" />
+                        </DockPanel>
+                        <DockPanel>
+                            <CheckBox Name="chbCheckAnonymous" Content="Check if anonymous?" FontSize="12" Checked="chbCheckAnonymous_Checked" Unchecked="chbCheckAnonymous_Unchecked" />
+                            <TextBox Name="tbAnonymousCheckSite" Height="30" Margin="5" LostFocus="tbAnonymousCheckSite_LostFocus" />
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Left">
+                            <Label Height="30" FontSize="12" Content="Threads" />
+                            <TextBox Name="tbProxyThread" FontSize="12" Height="30" Width="100" Margin="10,0,10,0" LostFocus="tbProxyThread_LostFocus" />
+                            <Label Height="30" FontSize="12" Content="Timeout" />
+                            <TextBox Name="tbProxyTimeout" FontSize="12" Height="30" Width="100" Margin="10,0,0,0" LostFocus="tbProxyTimeout_LostFocus" />
+                            <Label Height="30" FontSize="12" Content="sec(s)" />
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Using settings" Grid.Column="1" Padding="0" Margin="0,0,5,5">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,5">
+                                <Label Height="30" FontSize="12" Content="Scrape: harvest links" Width="150" />
+                                <ComboBox Name="cbScrapeHarvestLink" FontSize="12" Margin="5,0,5,0" SelectionChanged="cbScrapeHarvestLink_SelectionChanged" >
+                                    <ComboBoxItem Tag="PublicProxy" FontSize="12">Using public proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="PrivateProxy" FontSize="12">Using private proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="Disabled" FontSize="12">Disabled using proxies</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="0,0,0,5">
+                                <Label Height="30" FontSize="12" Content="Scrape: download articles" Width="150" />
+                                <ComboBox Name="cbScrapeDownloadArticle" FontSize="12" Margin="5,0,5,0" SelectionChanged="cbScrapeDownloadArticle_SelectionChanged">
+                                    <ComboBoxItem Tag="PublicProxy" FontSize="12">Using public proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="PrivateProxy" FontSize="12">Using private proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="Disabled" FontSize="12">Disabled using proxies</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="0,0,0,5">
+                                <Label Height="30" FontSize="12" Content="Posting: harvest links" Width="150" />
+                                <ComboBox Name="cbPostingHarvestLink" FontSize="12" Margin="5,0,5,0" SelectionChanged="cbPostingHarvestLink_SelectionChanged" >
+                                    <ComboBoxItem Tag="PublicProxy" FontSize="12">Using public proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="PrivateProxy" FontSize="12">Using private proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="Disabled" FontSize="12">Disabled using proxies</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="0,0,0,5">
+                                <Label Height="30" FontSize="12" Content="Posting: download articles" Width="150" />
+                                <ComboBox Name="cbPostingDownloadArticle" FontSize="12" Margin="5,0,5,0" SelectionChanged="cbPostingDownloadArticle_SelectionChanged" >
+                                    <ComboBoxItem Tag="PublicProxy" FontSize="12">Using public proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="PrivateProxy" FontSize="12">Using private proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="Disabled" FontSize="12">Disabled using proxies</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="0,0,0,5">
+                                <Label Height="30" FontSize="12" Content="VNS: download articles" Width="150" />
+                                <ComboBox Name="cbVNSDownloadArticle" FontSize="12" Margin="5,0,5,0" SelectionChanged="cbVNSDownloadArticle_SelectionChanged" >
+                                    <ComboBoxItem Tag="PublicProxy" FontSize="12">Using public proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="PrivateProxy" FontSize="12">Using private proxies</ComboBoxItem>
+                                    <ComboBoxItem Tag="Disabled" FontSize="12">Disabled using proxies</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

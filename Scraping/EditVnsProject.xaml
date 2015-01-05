@@ -1,0 +1,123 @@
+﻿<Window x:Class="Scraping.EditVnsProject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkitLayout="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="EditVnsProject" Height="450" Width="825" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="False" AllowDrop="True" BorderBrush="#be2f2f" BorderThickness="3">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+            <!-- Dark Theme -->
+            <SolidColorBrush x:Key="BackgroundKey" Color="#181818" />
+            <Style x:Key="MainLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="#767676" />
+                <Setter Property="FontSize" Value="18 "/>
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Name="dpHeader" MouseLeftButtonDown="dpHeader_MouseLeftButtonDown" >
+            <Label Margin="230,0,0,0" Foreground="Gray" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold">Virtual newspapers project settings</Label>
+            <Button Name="btnClose" Width="40" HorizontalAlignment="Right" Content="X" FontSize="15" FontWeight="ExtraBold" Margin="0,5,5,5" Click="btnClose_Click" />
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0" Margin="5,0,5,5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="145"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="Google Drive" Padding="0">
+                            <DockPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="300"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <DockPanel Grid.Column="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="33"></RowDefinition>
+                                                <RowDefinition Height="33"></RowDefinition>
+                                                <RowDefinition Height="33"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <DockPanel Grid.Row="0">
+                                                <Label>Client ID</Label>
+                                                <TextBox Text="" HorizontalAlignment="Right" Width="220" Height="30" Name="tbClientID" />
+                                            </DockPanel>
+                                            <DockPanel Grid.Row="1">
+                                                <Label>Secret Key</Label>
+                                                <PasswordBox HorizontalAlignment="Right" Width="220" Height="30" Name="tbClientKey" />
+                                            </DockPanel>
+                                            <DockPanel Grid.Row="2">
+                                                <Label>App. Name</Label>
+                                                <TextBox Text="" HorizontalAlignment="Right" Width="220" Height="30" Name="tbApplicationName" />
+                                            </DockPanel>
+                                        </Grid>
+                                    </DockPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <Button Name="btnTestGDrive" Content="Save &amp; Test" Margin="5,0,5,5" Click="btnTestGDrive_Click" />
+                                        <Label Name="lblGDriveConnectStatus" Height="30" FontStyle="Italic" FontSize="11" Background="Gray" Margin="5,0,5,0" Content="Pending!" HorizontalContentAlignment="Center"/>
+                                        <ProgressBar Name="prbUsage" Height="20" HorizontalContentAlignment="Center"  Margin="5,10,5,0" Minimum="0" Maximum="100" Foreground="#be2f2f" Value="0" Background="Green"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DockPanel>
+                        </GroupBox>
+                        <DockPanel Grid.Row="1" Name="dp_AutoPostSettingSection">
+                            <GroupBox Header="Autopost settings" Padding="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Button Name="btnSetupVnsToSites" Grid.Column="0" Grid.Row="0" Margin="0,0,0,5" Content="Setup VNS to sites" Click="btnSetupVnsToSites_Click" />
+                                    <Button Name="btnSetupSeoToSites" Grid.Column="0" Grid.Row="1" Margin="0,0,0,5" Content="Setup SEO to sites" Click="btnSetupSeoToSites_Click" />
+                                    <Button Name="btnSetupScheduleToSites" Grid.Column="0" Grid.Row="2" Margin="0,0,0,5" Content="Setup schedule to sites" Click="btnSetupScheduleToSites_Click" />
+                                </Grid>
+                            </GroupBox>
+                        </DockPanel>
+                    </Grid>
+                </DockPanel>
+                <DockPanel Grid.Column="1" Margin="0,0,5,0">
+                    <GroupBox Header="Posting Sites" Padding="0">
+                        <Grid>
+                            <DockPanel Margin="0,3,0,0">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                                    <StackPanel Name="spPostingSites">
+
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </DockPanel>
+                        </Grid>
+                    </GroupBox>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
